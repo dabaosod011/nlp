@@ -11,7 +11,7 @@ using namespace std;
 int main()
 {
 	Norvig::SpellChecker _spellcheker;
-	_spellcheker.load("D:\\Code\\cpp\\NatureLanguageProcess\\output\\Win32\\Debug\\data.txt");
+	_spellcheker.load(".\\data.txt");
 
 	std::string word;
 	std::cout << "please input a word: ";
