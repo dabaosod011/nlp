@@ -12,13 +12,14 @@ int main()
 {
 	Norvig::SpellChecker _spellcheker;
 	_spellcheker.load(".\\data.txt");
-
-	std::string word;
-	std::cout << "please input a word: ";
-	while (std::cin >> word)
-	{		
-		std::cout << _spellcheker.correct(word) << std::endl;
+	
+	while (!std::cin.eof()) 
+	{
 		std::cout << "please input a word: ";
+		std::string word;
+		std::cin >> word;
+		if (!word.empty())
+			std::cout << _spellcheker.correct(word) << std::endl;
 	}
 
 	system("pause");

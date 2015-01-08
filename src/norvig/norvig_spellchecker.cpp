@@ -20,11 +20,16 @@ namespace Norvig
 			content.assign(std::istreambuf_iterator<char>(infile),std::istreambuf_iterator<char>());
 			infile.close();
 
-			std::smatch matchedWords;			
+			std::smatch matchedWords;
+			std::string tmpword;
 			while(std::regex_search(content, matchedWords, mWordPattern))
 			{
 				for (auto aWord : matchedWords)
-					mDictionary[aWord] +=1;
+				{
+					tmpword = matchedWords.str();
+					std::transform(tmpword.begin(), tmpword.end(), tmpword.begin(), ::tolower);
+					mDictionary[tmpword] +=1;
+				}
 				content = matchedWords.suffix().str();				
 			}
 		}

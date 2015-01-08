@@ -5,6 +5,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SpellCheck", "SpellCheck", 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "norvig", "norvig\norvig.vcxproj", "{0F8A9F29-B2CB-44CB-B658-A3FCCCD2CBAE}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bk_tree", "bk_tree\bk_tree.vcxproj", "{7FCC947D-957C-4FC2-9BE5-5CDAEF9AF99E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -15,11 +17,16 @@ Global
 		{0F8A9F29-B2CB-44CB-B658-A3FCCCD2CBAE}.Debug|Win32.Build.0 = Debug|Win32
 		{0F8A9F29-B2CB-44CB-B658-A3FCCCD2CBAE}.Release|Win32.ActiveCfg = Release|Win32
 		{0F8A9F29-B2CB-44CB-B658-A3FCCCD2CBAE}.Release|Win32.Build.0 = Release|Win32
+		{7FCC947D-957C-4FC2-9BE5-5CDAEF9AF99E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7FCC947D-957C-4FC2-9BE5-5CDAEF9AF99E}.Debug|Win32.Build.0 = Debug|Win32
+		{7FCC947D-957C-4FC2-9BE5-5CDAEF9AF99E}.Release|Win32.ActiveCfg = Release|Win32
+		{7FCC947D-957C-4FC2-9BE5-5CDAEF9AF99E}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{0F8A9F29-B2CB-44CB-B658-A3FCCCD2CBAE} = {40AEC200-4F37-4D1D-9D04-2DC9BAD16571}
+		{7FCC947D-957C-4FC2-9BE5-5CDAEF9AF99E} = {40AEC200-4F37-4D1D-9D04-2DC9BAD16571}
 	EndGlobalSection
 EndGlobal
