@@ -74,9 +74,11 @@ namespace BKTree
 		if (mRoot->insert(node))
 			mTotalNodes++;
 		else
+		{
 			//	!!!!!!!!!!!!!!!!!!!!!!!!!!!
 			//	memory leak if do not delete here.
 			delete node;
+		}
 	}
 
 	void BK_Tree::destoryTree(BK_Node *node)
