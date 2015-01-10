@@ -9,6 +9,7 @@
 #include <fstream>
 #include <algorithm>
 #include <regex>
+#include <boost/timer/timer.hpp>
 
 using namespace std;
 
@@ -26,7 +27,6 @@ namespace BKTree
 		{
 			mChildNodes.clear();
 		}
-
 	public:
 		bool insert(BK_Node *node);
 	};
@@ -37,11 +37,15 @@ namespace BKTree
 		BK_Tree() : mRoot(NULL), mTotalNodes(0) {};
 		~BK_Tree()
 		{
-			this->destoryTree();
+			this->destoryTree(mRoot);
 		}
 	public:
 		void createTree(string filename);
 		string correct(string word);
+		size_t getTotalNodes()
+		{
+			return mTotalNodes;
+		}
 
 	private:
 		BK_Node *mRoot;
@@ -50,9 +54,8 @@ namespace BKTree
 
 	private:
 		void insertNode(BK_Node *node);
-		void findDistanceK(string word, int K, BK_Node *node, std::unordered_map<std::string, int>& candidates);
-		void destoryTree();
-		void destoryNode(BK_Node *node);
+		void findDistanceK(string word, int K, BK_Node *node, std::unordered_map<std::string, int>& candidates);		
+		void destoryTree(BK_Node *node);
 	};
 
 	inline int editDistance(string word1, string word2);

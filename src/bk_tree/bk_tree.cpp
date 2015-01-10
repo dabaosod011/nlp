@@ -33,8 +33,6 @@ namespace BKTree
 
 	void BK_Tree::createTree(string filename)
 	{
-		std::cout << "Loading " <<filename << "..." << std::endl;
-
 		std::ifstream infile(filename);  
 		if (infile.is_open())  
 		{ 
@@ -75,21 +73,20 @@ namespace BKTree
 
 		if (mRoot->insert(node))
 			mTotalNodes++;
+		else
+			//	!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			//	memory leak if do not delete here.
+			delete node;
 	}
 
-	void BK_Tree::destoryTree()
-	{
-		this->destoryNode(mRoot);
-	}
-
-	void BK_Tree::destoryNode(BK_Node *node)
+	void BK_Tree::destoryTree(BK_Node *node)
 	{
 		if (node == NULL)
 			return;
 
 		for (auto it = node->mChildNodes.begin(); it != node->mChildNodes.end(); it++)
 		{
-			destoryNode(*it);
+			destoryTree(*it);
 		}
 
 		delete node;
@@ -97,6 +94,9 @@ namespace BKTree
 
 	void BK_Tree::findDistanceK(string word, int K, BK_Node *node, std::unordered_map<std::string, int>& candidates)
 	{
+		if (node == NULL)
+			return;
+
 		int distance = editDistance(word, node->mWord);
 		if ( distance <= K )
 			candidates[node->mWord] = distance;

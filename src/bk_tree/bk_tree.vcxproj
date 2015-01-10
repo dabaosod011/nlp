@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{7FCC947D-957C-4FC2-9BE5-5CDAEF9AF99E}</ProjectGuid>
+    <ProjectGuid>{3BF6D272-7E46-49CB-95D2-DD86D72D0B81}</ProjectGuid>
     <RootNamespace>bk_tree</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -66,11 +66,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="bk_tree.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="bk_tree.cpp" />
     <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="bk_tree.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -9,6 +9,12 @@
 #include <fstream>
 #include <algorithm>
 #include <regex>
+#include <boost/timer/timer.hpp>
+
+/*
+*	http://norvig.com/spell-correct.html
+*	http://blog.youxu.info/spell-correct.html
+**/
 
 namespace Norvig
 {
@@ -17,6 +23,10 @@ namespace Norvig
 	public:
 		void load(const std::string& filename);
 		std::string correct(const std::string& word);
+		size_t getDictionarySize()
+		{
+			return mDictionary.size();
+		}
 
 	private:
 		static std::regex mWordPattern;

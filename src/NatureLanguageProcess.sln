@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SpellCheck", "SpellCheck", "{40AEC200-4F37-4D1D-9D04-2DC9BAD16571}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SpellChecker", "SpellChecker", "{1045F3C5-DDCF-4767-9A5F-0CC95A255554}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "norvig", "norvig\norvig.vcxproj", "{0F8A9F29-B2CB-44CB-B658-A3FCCCD2CBAE}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "norvig", "norvig\norvig.vcxproj", "{55B79F41-CEEF-4A19-BC77-68A3CB4ADCC6}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bk_tree", "bk_tree\bk_tree.vcxproj", "{7FCC947D-957C-4FC2-9BE5-5CDAEF9AF99E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bk_tree", "bk_tree\bk_tree.vcxproj", "{3BF6D272-7E46-49CB-95D2-DD86D72D0B81}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,20 +13,20 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0F8A9F29-B2CB-44CB-B658-A3FCCCD2CBAE}.Debug|Win32.ActiveCfg = Debug|Win32
-		{0F8A9F29-B2CB-44CB-B658-A3FCCCD2CBAE}.Debug|Win32.Build.0 = Debug|Win32
-		{0F8A9F29-B2CB-44CB-B658-A3FCCCD2CBAE}.Release|Win32.ActiveCfg = Release|Win32
-		{0F8A9F29-B2CB-44CB-B658-A3FCCCD2CBAE}.Release|Win32.Build.0 = Release|Win32
-		{7FCC947D-957C-4FC2-9BE5-5CDAEF9AF99E}.Debug|Win32.ActiveCfg = Debug|Win32
-		{7FCC947D-957C-4FC2-9BE5-5CDAEF9AF99E}.Debug|Win32.Build.0 = Debug|Win32
-		{7FCC947D-957C-4FC2-9BE5-5CDAEF9AF99E}.Release|Win32.ActiveCfg = Release|Win32
-		{7FCC947D-957C-4FC2-9BE5-5CDAEF9AF99E}.Release|Win32.Build.0 = Release|Win32
+		{55B79F41-CEEF-4A19-BC77-68A3CB4ADCC6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{55B79F41-CEEF-4A19-BC77-68A3CB4ADCC6}.Debug|Win32.Build.0 = Debug|Win32
+		{55B79F41-CEEF-4A19-BC77-68A3CB4ADCC6}.Release|Win32.ActiveCfg = Release|Win32
+		{55B79F41-CEEF-4A19-BC77-68A3CB4ADCC6}.Release|Win32.Build.0 = Release|Win32
+		{3BF6D272-7E46-49CB-95D2-DD86D72D0B81}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3BF6D272-7E46-49CB-95D2-DD86D72D0B81}.Debug|Win32.Build.0 = Debug|Win32
+		{3BF6D272-7E46-49CB-95D2-DD86D72D0B81}.Release|Win32.ActiveCfg = Release|Win32
+		{3BF6D272-7E46-49CB-95D2-DD86D72D0B81}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{0F8A9F29-B2CB-44CB-B658-A3FCCCD2CBAE} = {40AEC200-4F37-4D1D-9D04-2DC9BAD16571}
-		{7FCC947D-957C-4FC2-9BE5-5CDAEF9AF99E} = {40AEC200-4F37-4D1D-9D04-2DC9BAD16571}
+		{55B79F41-CEEF-4A19-BC77-68A3CB4ADCC6} = {1045F3C5-DDCF-4767-9A5F-0CC95A255554}
+		{3BF6D272-7E46-49CB-95D2-DD86D72D0B81} = {1045F3C5-DDCF-4767-9A5F-0CC95A255554}
 	EndGlobalSection
 EndGlobal

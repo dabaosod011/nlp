@@ -11,8 +11,6 @@ namespace Norvig
 
 	void SpellChecker::load(const std::string& filename)
 	{
-		std::cout << "Loading " <<filename << "..." << std::endl;
-
 		std::ifstream infile(filename);  
 		if (infile.is_open())  
 		{ 
@@ -113,11 +111,11 @@ namespace Norvig
 
 		if (candidates.size() > 0) 
 			return max_element(candidates.begin(), candidates.end(), sortBySecond)->first;
-
-		std::unordered_map<std::string, int> candidates_edit2;
+	
+		/*std::unordered_map<std::string, int> candidates_edit2;
 		this->known_edits2(word, candidates_edit2);
 		if (candidates_edit2.size() > 0) 
-			return max_element(candidates_edit2.begin(), candidates_edit2.end(), sortBySecond)->first;
+			return max_element(candidates_edit2.begin(), candidates_edit2.end(), sortBySecond)->first;*/
 
 		return word;
 	}
