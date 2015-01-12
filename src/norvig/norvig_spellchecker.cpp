@@ -7,29 +7,22 @@ namespace Norvig
 		return left.second < right.second;
 	}
 
-	std::regex SpellChecker::mWordPattern = std::regex("\\b[a-zA-Z]\\w+\\b");
-
 	void SpellChecker::load(const std::string& filename)
 	{
 		std::ifstream infile(filename);  
 		if (infile.is_open())  
 		{ 
-			std::string content;
-			content.assign(std::istreambuf_iterator<char>(infile),std::istreambuf_iterator<char>());
-			infile.close();
+			std::string tmpline;
+			std::vector<std::string> tmpstrings;
+			while (!infile.eof() )  
+			{  
+				infile >> tmpline;
+				std::transform(tmpline.begin(), tmpline.end(), tmpline.begin(), ::tolower);
+				split_string(tmpline, tmpstrings);
 
-			std::smatch matchedWords;
-			std::string tmpword;
-			while(std::regex_search(content, matchedWords, mWordPattern))
-			{
-				for (auto aWord : matchedWords)
-				{
-					tmpword = matchedWords.str();
-					std::transform(tmpword.begin(), tmpword.end(), tmpword.begin(), ::tolower);
-					mDictionary[tmpword] +=1;
-				}
-				content = matchedWords.suffix().str();				
-			}
+				for (auto it = tmpstrings.begin(); it != tmpstrings.end(); ++it)
+					mDictionary[*it] +=1;
+			}  
 		}
 		else
 		{
@@ -118,6 +111,41 @@ namespace Norvig
 			return max_element(candidates_edit2.begin(), candidates_edit2.end(), sortBySecond)->first;*/
 
 		return word;
+	}
+
+	void SpellChecker::suggestion(string word, vector<string> &candidates)
+	{
+		std::unordered_map<std::string, int> result;
+		this->known(word, result);
+
+		if (mDictionary.count(word) != 0)
+		{
+			candidates.push_back(word);
+			return;
+		}
+
+		for(auto it=result.begin(); it!=result.end(); it++)
+			candidates.push_back(it->first);			
+	}
+
+	void split_string(std::string &str, std::vector<std::string> &result)
+	{
+		result.clear();
+		size_t len = str.size();
+		size_t pos = 0, pos_begin = 0;
+
+		while (pos < len)
+		{
+			if (isalpha(str[pos]))
+			{
+				pos_begin = pos; 
+				while ( pos < len && isalpha(str[pos]) )
+					pos++;
+				result.push_back(str.substr(pos_begin, pos-pos_begin));				
+			}
+
+			pos++;
+		}
 	}
 
 }

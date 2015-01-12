@@ -8,7 +8,6 @@
 #include <unordered_map>
 #include <fstream>
 #include <algorithm>
-#include <regex>
 #include <boost/timer/timer.hpp>
 
 using namespace std;
@@ -42,23 +41,28 @@ namespace BKTree
 	public:
 		void createTree(string filename);
 		string correct(string word);
+		void suggestion(string word, vector<string> &candidates);
+
 		size_t getTotalNodes()
 		{
 			return mTotalNodes;
 		}
 
+	public:
+		static int mDistance;
+
 	private:
 		BK_Node *mRoot;
 		size_t mTotalNodes;
-		static std::regex mWordPattern;
 
 	private:
 		void insertNode(BK_Node *node);
-		void findDistanceK(string word, int K, BK_Node *node, std::unordered_map<std::string, int>& candidates);		
+		void findDistanceK(string word, int K, BK_Node *node, unordered_map<string, int>& candidates);		
 		void destoryTree(BK_Node *node);
 	};
 
 	inline int editDistance(string word1, string word2);
+	inline void split_string(string &str, vector<string> &result);
 };
 
 #endif

@@ -1,14 +1,13 @@
 #include "bk_tree.h"
 
-#define DATA_TRAIN "D:\\Code\\cpp\\NatureLanguageProcess\\output\\Win32\\Debug\\data_train.txt"
-#define DATA_TEST "D:\\Code\\cpp\\NatureLanguageProcess\\output\\Win32\\Debug\\data_test.txt"
+#define DATA_TRAIN ".\\data_train.txt"
+#define DATA_TEST ".\\data_test.txt"
 
 int main()
 {
 	BKTree::BK_Tree bktree_spellcheker;
 	int numTotal = 0;
 	int numCorrect = 0;
-	int current = 0;
 	boost::timer::cpu_timer timer; 
 	boost::timer::cpu_times time;
 	
@@ -26,7 +25,8 @@ int main()
 	if (infile.is_open())
 	{ 
 		std::string tmpline;
-		std::string word, expect, predict;
+		std::string word, expect/*, predict*/;
+		std::vector<std::string> candidates;
 		while (!infile.eof() )  
 		{ 
 			infile >> tmpline;
@@ -36,11 +36,15 @@ int main()
 			{
 				word = tmpline.substr(0, pos);
 				expect = tmpline.substr(pos+2);
-				predict = bktree_spellcheker.correct(word);
-				std::cout << "Checking " << word << ", expect: " << expect << ", result: " << predict << std::endl;
+				//predict = bktree_spellcheker.correct(word);				
+				//std::cout << "Checking " << word << ", expect: " << expect << std::endl;
+				candidates.clear();
+				bktree_spellcheker.suggestion(word, candidates);
 				numTotal++;
-				if(predict == expect)
+				if( std::find(candidates.begin(), candidates.end(), expect) != candidates.end() )
 					numCorrect++;
+				else
+					std::cout << "Can not find " << expect << " for " <<  word << std::endl;
 			}
 		}
 	}

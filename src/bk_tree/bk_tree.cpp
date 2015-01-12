@@ -2,8 +2,6 @@
 
 namespace BKTree
 {
-	std::regex BK_Tree::mWordPattern = std::regex("\\b[a-zA-Z]\\w+\\b");
-	
 	bool sortBySecond(const std::pair<std::string, int>& left, const std::pair<std::string, int>& right) 
 	{
 		return left.second < right.second;
@@ -31,34 +29,32 @@ namespace BKTree
 		return true;
 	}
 
+	int BK_Tree::mDistance = 4;
+
 	void BK_Tree::createTree(string filename)
 	{
 		std::ifstream infile(filename);  
 		if (infile.is_open())  
 		{ 
-			std::string content;
-			content.assign(std::istreambuf_iterator<char>(infile),std::istreambuf_iterator<char>());
-			infile.close();
+			std::string tmpline;
+			std::vector<std::string> tmpstrings;
+			while (!infile.eof() )  
+			{  
+				infile >> tmpline;
+				std::transform(tmpline.begin(), tmpline.end(), tmpline.begin(), ::tolower);
+				split_string(tmpline, tmpstrings);
 
-			std::smatch matchedWords;
-			string tmpword;
-			while(std::regex_search(content, matchedWords, mWordPattern))
-			{
-				for (auto aWord : matchedWords)
+				for (auto it = tmpstrings.begin(); it != tmpstrings.end(); ++it)
 				{
-					tmpword = matchedWords.str();
-					std::transform(tmpword.begin(), tmpword.end(), tmpword.begin(), ::tolower);
-					BK_Node *node = new BK_Node(tmpword);
+					BK_Node *node = new BK_Node(*it);
 					this->insertNode(node);
 				}
-				content = matchedWords.suffix().str();				
 			}
 		}
 		else
 		{
 			std::cout << "Can not open the file: " <<filename << std::endl;
 			infile.close();
-			return ;
 		}
 	}
 	
@@ -115,11 +111,19 @@ namespace BKTree
 	string BK_Tree::correct(string word)
 	{
 		std::unordered_map<std::string, int> candidates;
-		this->findDistanceK(word, 2, this->mRoot, candidates);
+		this->findDistanceK(word, mDistance, this->mRoot, candidates);
 		if (candidates.size() > 0) 
 			return min_element(candidates.begin(), candidates.end(), sortBySecond)->first;
 
 		return word;
+	}
+
+	void BK_Tree::suggestion(string word, vector<string> &candidates)
+	{
+		std::unordered_map<std::string, int> result;
+		this->findDistanceK(word, mDistance, this->mRoot, result);
+		for(auto it=result.begin(); it!=result.end(); it++)
+			candidates.push_back(it->first);
 	}
 
 	int editDistance(string word1, string word2) 
@@ -145,6 +149,26 @@ namespace BKTree
 		}
 
 		return matrix[len1][len2];
+	}
+
+	void split_string(string &str, vector<string> &result)
+	{
+		result.clear();
+		size_t len = str.size();
+		size_t pos = 0, pos_begin = 0;
+
+		while (pos < len)
+		{
+			if (isalpha(str[pos]))
+			{
+				pos_begin = pos; 
+				while ( pos < len && isalpha(str[pos]) )
+					pos++;
+				result.push_back(str.substr(pos_begin, pos-pos_begin));				
+			}
+
+			pos++;
+		}
 	}
 
 };

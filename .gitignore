@@ -16,3 +16,4 @@ ut
 *.aps
 *.psess
 *.vsp
+!*.exe
