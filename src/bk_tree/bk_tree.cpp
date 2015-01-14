@@ -47,7 +47,8 @@ namespace BKTree
 				for (auto it = tmpstrings.begin(); it != tmpstrings.end(); ++it)
 				{
 					BK_Node *node = new BK_Node(*it);
-					this->insertNode(node);
+					if (!this->insertNode(node))
+						delete node;
 				}
 			}
 		}
@@ -58,23 +59,22 @@ namespace BKTree
 		}
 	}
 	
-	void BK_Tree::insertNode(BK_Node *node)
+	bool BK_Tree::insertNode(BK_Node *node)
 	{
 		if (mRoot == NULL)
 		{
 			mRoot = node;
 			mTotalNodes++;
-			return;
+			return true;
 		}
 
 		if (mRoot->insert(node))
-			mTotalNodes++;
-		else
 		{
-			//	!!!!!!!!!!!!!!!!!!!!!!!!!!!
-			//	memory leak if do not delete here.
-			delete node;
+			mTotalNodes++;
+			return true;
 		}
+
+		return false;
 	}
 
 	void BK_Tree::destoryTree(BK_Node *node)

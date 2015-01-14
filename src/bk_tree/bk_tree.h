@@ -56,7 +56,7 @@ namespace BKTree
 		size_t mTotalNodes;
 
 	private:
-		void insertNode(BK_Node *node);
+		bool insertNode(BK_Node *node);
 		void findDistanceK(string word, int K, BK_Node *node, unordered_map<string, int>& candidates);		
 		void destoryTree(BK_Node *node);
 	};
